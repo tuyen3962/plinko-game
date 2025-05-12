@@ -2,6 +2,7 @@ import { Coin, CurrencyDollarSimple, Smiley } from 'phosphor-react'
 import { ChangeEvent, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthStore } from 'store/auth'
+import { useGameStore } from 'store/game'
 
 import { LinesType } from '../../@types'
 
@@ -18,7 +19,8 @@ export function BetActions({
 }: PlinkoBetActions) {
   const isLoading = useAuthStore(state => state.isWalletLoading)
   const currentBalance = useAuthStore(state => state.wallet.balance)
-  const decrementCurrentBalance = useAuthStore(state => state.decrementBalance)
+  const setGamesRunning = useGameStore(state => state.setGamesRunning)
+  // const decrementCurrentBalance = useAuthStore(state => state.decrementBalance)
   const isAuth = useAuthStore(state => state.isAuth)
   const [betValue, setBetValue] = useState(0)
   const maxLinesQnt = 16
@@ -67,15 +69,16 @@ export function BetActions({
   }
 
   async function handleRunBet() {
-    if (!isAuth || isLoading) return
-    if (inGameBallsCount >= 15) return
-    if (betValue > currentBalance) {
-      setBetValue(currentBalance)
-      return
-    }
-    onRunBet(betValue)
-    if (betValue <= 0) return
-    await decrementCurrentBalance(betValue)
+    // if (!isAuth || isLoading) return
+    // if (inGameBallsCount >= 15) return
+    // if (betValue > currentBalance) {
+    // setBetValue(currentBalance)
+    setGamesRunning(2)
+    // return
+    // }
+    // onRunBet(betValue)
+    // if (betValue <= 0) return
+    // await decrementCurrentBalance(betValue)
   }
 
   return (

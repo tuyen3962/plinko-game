@@ -11,10 +11,10 @@ export function Navbar() {
   const inGameBallsCount = useGameStore(state => state.gamesRunning)
   const currentBalance = useAuthStore(state => state.wallet.balance)
   const isAuth = useAuthStore(state => state.isAuth)
-  const signOut = useAuthStore(state => state.signOut)
+  // const signOut = useAuthStore(state => state.signOut)
 
   async function handleSignOut() {
-    await signOut()
+    // await signOut()
   }
 
   return (

@@ -27,7 +27,7 @@ import {
 
 export function Game() {
   // #region States
-  const incrementCurrentBalance = useAuthStore(state => state.incrementBalance)
+  // const incrementCurrentBalance = useAuthStore(state => state.incrementBalance)
   const engine = Engine.create()
   const [lines, setLines] = useState<LinesType>(16)
   const inGameBallsCount = useGameStore(state => state.gamesRunning)
@@ -171,9 +171,9 @@ export function Game() {
   )
   const rightWall = Bodies.rectangle(
     worldWidth -
-      pinsConfig.pinSize * pinsConfig.pinGap -
-      pinsConfig.pinGap -
-      pinsConfig.pinGap / 2,
+    pinsConfig.pinSize * pinsConfig.pinGap -
+    pinsConfig.pinGap -
+    pinsConfig.pinGap / 2,
     worldWidth / 2 - pinsConfig.pinSize - 30,
     worldWidth * 2,
     40,
@@ -251,7 +251,7 @@ export function Game() {
     if (+ballValue <= 0) return
 
     const newBalance = +ballValue * multiplierValue
-    await incrementCurrentBalance(newBalance)
+    // await incrementCurrentBalance(newBalance)
   }
   async function onBodyCollision(event: IEventCollision<Engine>) {
     const pairs = event.pairs

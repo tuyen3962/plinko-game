@@ -1,6 +1,6 @@
-import { onValue, ref } from 'firebase/database'
+// import { onValue, ref } from 'firebase/database'
 import { Navbar } from 'layouts/DefaultLayout/components/Navbar'
-import { database } from 'lib/firebase'
+// import { database } from 'lib/firebase'
 import { Outlet } from 'react-router-dom'
 import { useAuthStore } from 'store/auth'
 
@@ -9,23 +9,23 @@ import { Loading } from './components/Loading'
 
 export function DefaultLayout() {
   const isLoading = useAuthStore(state => state.isAuthLoading)
-  const setCurrentBalance = useAuthStore(state => state.setBalance)
-  const setBalanceOnDatabase = useAuthStore(state => state.setBalanceOnDatabase)
+  // const setCurrentBalance = useAuthStore(state => state.setBalance)
+  // const setBalanceOnDatabase = useAuthStore(state => state.setBalanceOnDatabase)
   const isAuth = useAuthStore(state => state.isAuth)
   const user = useAuthStore(state => state.user)
-  const walletRef = ref(database, 'wallet/' + user.id)
+  // const walletRef = ref(database, 'wallet/' + user.id)
 
-  onValue(walletRef, async snapshot => {
-    if (snapshot.exists()) {
-      const data = snapshot.val()
-      if (data && isAuth) {
-        setCurrentBalance(data.currentBalance)
-        return
-      }
-      return
-    }
-    await setBalanceOnDatabase(100)
-  })
+  // onValue(walletRef, async snapshot => {
+  //   if (snapshot.exists()) {
+  //     const data = snapshot.val()
+  //     if (data && isAuth) {
+  //       setCurrentBalance(data.currentBalance)
+  //       return
+  //     }
+  //     return
+  //   }
+  //   await setBalanceOnDatabase(100)
+  // })
 
   return (
     <div className="flex relative min-h-screen w-full flex-col justify-between bg-background">

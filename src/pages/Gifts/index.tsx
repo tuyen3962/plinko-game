@@ -4,11 +4,11 @@ import { useAuthStore } from 'store/auth'
 import { formatPoints } from 'utils/currencyFormat'
 
 export function Gifts() {
-  const redeemGift = useAuthStore(state => state.redeemGift)
+  // const redeemGift = useAuthStore(state => state.redeemGift)
   const currentBalance = useAuthStore(state => state.wallet.balance)
   const navigate = useNavigate()
   async function handleRedeemGift() {
-    await redeemGift()
+    // await redeemGift()
     navigate('/')
   }
   return (
